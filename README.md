@@ -29,19 +29,20 @@ This is a skel project with the intended goal of adding MVC by commit, and used 
 
 #### Creating Views
     $ mkdir ./views/aNewView
-    $ touch ./views/aNewView/body.jade
+    $ echo "<div class=\"well\">HELLO</div>" > ./views/aNewView/body.jade
 
 #### Switching Views
 Open up the dev console:
 
 ````javascript
-    var view = 'aNewView';
+    window.controller.view = 'aNewView';
     window.controller.displayView();
 ````
 
 #### Running tests
-A good way to determine if your system is ready to run this webstack, run
+A good way to determine if your system is ready to run this webstack, 
+run the tests. It will tell you if redis and other dependencies are not met. 
 
     $ npm test
 
-It will tell you if redis and other dependencies arent met. 
+
