@@ -1,6 +1,5 @@
 #### node-web-skel
-    This is a skel project with the intended goal of adding MVC by commit,
-    and used in a blog series.
+This is a skel project with the intended goal of adding MVC by commit, and used in a blog series.
 
 #### Dependencies
   - bower 1.2.3
@@ -28,11 +27,15 @@
 #### Accessing
     browse to http://localhost:3000
 
+#### Creating Views
+    $ mkdir ./views/aNewView
+    $ touch ./views/aNewView/body.jade
+
 #### Switching Views
-    in the HTML source, browse the Controller
+Open up the dev console:
 
 ````javascript
-    var view = 'index';
+    var view = 'aNewView';
     window.controller.displayView();
 ````
 
@@ -41,4 +44,4 @@ A good way to determine if your system is ready to run this webstack, run
 
     $ npm test
 
-It will tell you if redis and other dependencies arent met.
+It will tell you if redis and other dependencies arent met. 
