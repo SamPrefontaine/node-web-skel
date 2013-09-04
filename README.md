@@ -2,7 +2,7 @@
 This is a skel project with the intended goal of adding MVC by commit, and used in a blog series.
 
 #### Dependencies
-  - bower 1.2.3
+  - bower 1.2.4
   - Node 0.10.17
   - Redis
 
