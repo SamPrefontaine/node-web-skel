@@ -7,6 +7,21 @@
     "start": "node app.js",
     "test": "vows test/* --spec"
   },
+  "licenses": [
+    { 
+      "type": "MIT", 
+      "url": "https://github.com/PortalGNU/node-web-skel/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PortalGNU/node-web-skel.git"
+  },
+  "keywords": [
+    "skel",
+    "webstack",
+    "stack"
+  ],
   "dependencies": {
     "express": "*",
     "jade": "*",
