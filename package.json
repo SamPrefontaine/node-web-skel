@@ -1,0 +1,20 @@
+{
+  "name": "node-web-skel",
+  "version": "0.0.1",
+  "description": "Basic Web Skel for dynamic webApps",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "vows test/* --spec"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "coffee-script": "*",
+    "async": "*",
+    "asset-rack": "*",
+    "connect-redis": "*",
+    "vows": "*",
+    "request": "*"
+  }
+}
