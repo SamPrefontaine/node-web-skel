@@ -57,24 +57,22 @@ exports.testWebServer = vows.describe("Web Class").addBatch
       'we get a configured web server': (web)->
         assert.isTrue web.configured
 
-      'we have a redis session store': (web)->
+      'it has a redis session store': (web)->
         assert.isObject web.sessionStore
 
-      'it has a viewPort object': (web)->
+      'it has a viewPort object, which has methods': (web)->
         assert.isObject web.viewPort
-
-      'the viewPort has methods': (web)->
         length = web.viewPort.methods.length > 1
         assert.equal length, true
 
-      'we have an app fn reference': (web)->
+      'it has an app fn reference': (web)->
         assert.isFunction web.app
 
-      'our mocked /mock route is pushed to app': (web)->
+      'it has our mocked /mock route, pushed to app': (web)->
         get = web.app.routes.get
         assert.equal get[get.length - 2].path, '/mock'
 
-      'our mocked /api/random/:random is pushed to app': (web)->
+      'it has our mocked /api/random/:random, pushed to app': (web)->
         get = web.app.routes.get
         assert.equal get[get.length - 1].path, '/api/random/:random'
 
