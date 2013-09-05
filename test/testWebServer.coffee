@@ -13,7 +13,7 @@ exports.testWebServer = vows.describe("Web Class").addBatch
     topic: ()->
       web = new Web(settings)
       web.settings.scriptPath = __dirname + "/../"
-      web.muteOutput = false
+      web.muteOutput = true
 
       return web
 
@@ -60,8 +60,27 @@ exports.testWebServer = vows.describe("Web Class").addBatch
       'it has a redis session store': (web)->
         assert.isObject web.sessionStore
 
-      'it has a viewPort object, which has methods': (web)->
+      'it hasViewPort, and a viewPort object with core methods': (web)->
+        assert.equal web.hasViewPort, true
         assert.isObject web.viewPort
+
+        methods = web.viewPort.methods
+        hasGetViewByName          = false
+        hasGetCarouselForViewName = false
+        hasGetGlobalNavigation    = false
+        for id of methods
+          switch methods[id].name
+            when "getViewByName"
+              hasGetViewByName = true
+            when "getCarouselForViewName"
+              hasGetCarouselForViewName = true
+            when "getGlobalNavigation"
+              hasGetGlobalNavigation = true
+
+        assert.equal hasGetViewByName, true
+        assert.equal hasGetCarouselForViewName, true
+        assert.equal hasGetGlobalNavigation, true
+
         length = web.viewPort.methods.length > 1
         assert.equal length, true
 
@@ -81,10 +100,12 @@ exports.testWebServer = vows.describe("Web Class").addBatch
 
       ', listen on port ':
         topic: ()->
-          return web.createServer()
+          listener = web.createServer()
+          return listener
 
         'server is listening': (web)->
           assert.isTrue web.listening
+          assert.isObject web.listener
 
         ', GET /':
           topic: ()->

@@ -103,7 +103,7 @@ class Web extends SuperClass
     @app.get '/', (req, res)->
       res.render 'index', { title: "node-web-skel" }
 
-    @http.createServer(@app).listen @app.get('port'), ()=>
+    @listener = @http.createServer(@app).listen @app.get('port'), ()=>
       @log('Express server listening on port ' + @app.get('port'))
       @listening = true
 
