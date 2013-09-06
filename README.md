@@ -14,11 +14,6 @@ If you would like to try it, clone it.
 
     $ sudo npm install -g coffee-script
 
-#### Installation
-
-    $ npm install
-    $ bower install
-   
 #### Configuration
 The templates in this stack point their script tags to public/components.  By default,
 bower stores installed components in bower_components at the root
@@ -33,6 +28,11 @@ or ***set this as your ~/.bowerrc***:
   "searchpath" : ["https://bower.herokuapp.com"]
 }
 ````
+
+#### Installation
+
+    $ npm install
+    $ bower install
 
 #### Running
 
