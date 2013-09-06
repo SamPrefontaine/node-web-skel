@@ -1,17 +1,38 @@
 #### node-web-skel
-This is a skel project with the intended goal of adding MVC by commit, and used in a blog series.
+This is a skel project with the intended goal of adding MVC by commit, and used in a blog series.  
+If you would like to try it, clone it.
+
+    $ git clone https://github.com/PortalGNU/node-web-skel.git
+    $ cd node-web-skel
 
 #### Dependencies
   - bower 1.2.6
   - Node 0.10.18
   - Redis
 
+#### Global Dependencies
+
+    $ sudo npm install -g coffee-script
 
 #### Installation
 
-  - npm install
-  - bower install
+    $ npm install
+    $ bower install
+   
+#### Configuration
+The templates in this stack point their script tags to public/components.  By default,
+bower stores installed components in bower_components at the root
+of the project folder.  You can either move it as public/components
+or ***set this as your ~/.bowerrc***:
 
+````javascript
+{
+  "directory"  : "public/components",
+  "json"       : "bower.json",
+  "endpoint"   : "https://bower.herokuapp.com",
+  "searchpath" : ["https://bower.herokuapp.com"]
+}
+````
 
 #### Running
 
@@ -25,13 +46,16 @@ This is a skel project with the intended goal of adding MVC by commit, and used 
     $ node cluster.js
 
 #### Accessing
+
     browse to http://localhost:3000
 
 #### Creating Views
+
     $ mkdir ./views/aNewView
     $ echo "<div class=\"well\">HELLO</div>" > ./views/aNewView/body.jade
 
-#### Switching Views 
+#### Switching Views
+
 Navigate to http://localhost:3000/ in your browser, 
 Open up the dev console:
 
@@ -42,13 +66,17 @@ Open up the dev console:
 
 #### Running tests
 A good way to determine if your system is ready to run this webstack, 
-run the tests. It will tell you if redis and other dependencies are not met. 
+run the tests. It will tell you if stack dependencies such as 
+modules and settings are met.  As this stack progresses, tests will
+allow a test driven style of development.
 
     $ npm test
 
 #### Doing fun interactive stuff!
 If you want to interact with the web server, simply start the server up
-inside the coffee console
+inside the coffee console.  You will have access to web, which is running
+a listening web server.  Go ahead and tab complete the object 
+to see what it contains.
 
     $ cd node-web-skel
     $ coffee
@@ -62,6 +90,7 @@ inside the coffee console
 
     coffee> web.configure()
     coffee> web.createServer()
+
 
 At this point, you have a web object, with the app reference.
 You can browse our defined index route at http://localhost:3000/ , and more
@@ -81,7 +110,7 @@ listening server (ctrl + c a few times).
 
     $ coffee
 
-    coffee> require 'cluster'
+    coffee> cluster = require 'cluster'
     coffee> cluster.setupMaster { exec: 'app.js' }
 
     coffee> workers = []
@@ -106,10 +135,12 @@ http://localhost:3000
 If we kill off our second process, then we can no longer get through to http://localhost:3000,
 until we spawn a new one
 
+    coffee> workers[1].kill()
+    
     coffee> workers.push(cluster.fork())
     3
     coffee> worker 3: Express server listening on port 3000
-    coffeee> workers
+    coffee> workers
 
 ````javascript
 [ 
