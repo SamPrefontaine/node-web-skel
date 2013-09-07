@@ -8,6 +8,13 @@ class Controller
 
     @controller = {}
 
+  setupControllers: ()->
+    # we will add controllers, later
+    @app.get '/', (req, res)->
+      res.render 'index', { title: "node-web-skel" }
+
+    return @
+
 class Events
   constructor: ()->
     @hasEvents = true
@@ -99,9 +106,7 @@ class Web extends SuperClass
     return @
 
   createServer: ()->
-    # we will add controllers, later
-    @app.get '/', (req, res)->
-      res.render 'index', { title: "node-web-skel" }
+    @setupControllers()
 
     @listener = @http.createServer(@app).listen @app.get('port'), ()=>
       @log('Express server listening on port ' + @app.get('port'))
